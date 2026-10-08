@@ -3,8 +3,6 @@ set -euo pipefail
 
 mkdir -p /app/logs /app/session-runtime
 
-echo "0 5 * * * /app/run-daily-trips.sh" | crontab -
-
-cron
+node scheduler.js &
 
 exec node admin-server.js
