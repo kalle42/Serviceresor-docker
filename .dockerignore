@@ -1,0 +1,10 @@
+node_modules
+.git
+.herenow
+.env.local.json
+users.local.json
+session-runtime
+todays-trips.json
+*.log
+.gitignore
+README.md

@@ -1,0 +1,16 @@
+/.herenow/
+node_modules/
+users.local.json
+.env.local.json
+session-runtime/
+todays-trips.json
+admin-dashboard.log
+admin-dashboard-test*
+installer/bin/
+installer/obj/
+tray/bin/
+tray/obj/
+*.log
+screenshots/*.png
+logs/
+cron-state.json

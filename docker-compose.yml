@@ -1,0 +1,25 @@
+services:
+  app:
+    build: .
+    container_name: fardtjanst
+    restart: unless-stopped
+    ports:
+      - "8787:8787"
+    environment:
+      - ADMIN_DASHBOARD_PASSWORD=${ADMIN_DASHBOARD_PASSWORD}
+      - ADMIN_DASHBOARD_HOST=0.0.0.0
+      - ADMIN_DASHBOARD_PORT=8787
+      - HERENOW_API_KEY=${HERENOW_API_KEY}
+      - HERENOW_PUBLISH_SCRIPT=${HERENOW_PUBLISH_SCRIPT:-/app/tools/publish.sh}
+      - ELKS_API_USERNAME=${ELKS_API_USERNAME}
+      - ELKS_API_PASSWORD=${ELKS_API_PASSWORD}
+      - TEXTBEE_API_KEY=${TEXTBEE_API_KEY}
+      - TEXTBEE_DEVICE_ID=${TEXTBEE_DEVICE_ID}
+      - TEXTBEE_BASE_URL=${TEXTBEE_BASE_URL:-https://api.textbee.dev/api/v1}
+      - NTFY_SERVER_URL=${NTFY_SERVER_URL:-https://ntfy.sh}
+      - NTFY_ACCESS_TOKEN=${NTFY_ACCESS_TOKEN}
+      - TZ=Europe/Stockholm
+    volumes:
+      - ./users.local.json:/app/users.local.json:ro
+      - ./session-runtime:/app/session-runtime
+      - ./logs:/app/logs
