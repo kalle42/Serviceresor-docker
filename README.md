@@ -14,6 +14,31 @@ docker compose up -d
 
 Open `http://localhost:8787` and log in with the password from `.env`.
 
+### Or run directly with `docker run`
+
+```bash
+docker run -d \
+  --name fardtjanst \
+  -p 8787:8787 \
+  -e ADMIN_DASHBOARD_PASSWORD="your-secure-password" \
+  -e ADMIN_DASHBOARD_HOST=0.0.0.0 \
+  -e ADMIN_DASHBOARD_PORT=8787 \
+  -e HERENOW_API_KEY="your-api-key" \
+  -e HERENOW_PUBLISH_SCRIPT=/app/tools/publish.sh \
+  -e ELKS_API_USERNAME="" \
+  -e ELKS_API_PASSWORD="" \
+  -e TEXTBEE_API_KEY="" \
+  -e TEXTBEE_DEVICE_ID="" \
+  -e TEXTBEE_BASE_URL="https://api.textbee.dev/api/v1" \
+  -e NTFY_SERVER_URL="https://ntfy.sh" \
+  -e NTFY_ACCESS_TOKEN="" \
+  -e TZ=Europe/Stockholm \
+  -v ./users.local.json:/app/users.local.json:ro \
+  -v ./session-runtime:/app/session-runtime \
+  -v ./logs:/app/logs \
+  ghcr.io/kalle42/serviceresor-docker:latest
+```
+
 ## Configuration
 
 ### Environment variables (`.env`)
